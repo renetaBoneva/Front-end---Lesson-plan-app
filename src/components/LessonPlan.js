@@ -5,10 +5,20 @@ export function LessonPlan() {
             <h2>Generate lecture plan</h2>
             <form>
                 <label htmlFor="class">Клас</label>
-                <input
-                    type="text"
-                    name="class"
-                />
+                <select name="class">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
 
                 <label htmlFor="course">Предмет</label>
                 <input
@@ -22,7 +32,11 @@ export function LessonPlan() {
                     name="theme"
                 />
 
-                <button type="submit">Генерирай</button>
+                <button
+                    className="submitBtn"
+                    type="submit">
+                    Генерирай
+                </button>
             </form>
         </>);
 }

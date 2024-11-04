@@ -1,2 +1,26 @@
+#contentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+h1 {
+    text-align: center;
+}
 
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+form label {
+    margin-top: 0.5em;
+}
+
+form button.submitBtn {
+    margin-top: 1.5em;
+    border-radius: 10px;
+}

@@ -6,9 +6,11 @@ function App() {
   return (
     <>
       <h1>Lesson plan with AI</h1>
-      <Routes>
-        <Route path='*' element={<LessonPlan />} />
-      </Routes>
+      <div id="contentWrapper">
+        <Routes>
+          <Route path='*' element={<LessonPlan />} />
+        </Routes>
+      </div>
     </>
   );
 }
