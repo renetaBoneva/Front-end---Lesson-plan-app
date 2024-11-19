@@ -24,3 +24,8 @@ form button.submitBtn {
     margin-top: 1.5em;
     border-radius: 10px;
 }
+
+.errP{
+    color: red;
+    margin: 0;
+}
