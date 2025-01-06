@@ -1,9 +1,6 @@
 import { useState } from "react";
 import * as lessonPlanService from "../services/lessonPlanService";
 
-// да добавя поле за препоръки
-// да добавя дали урокът е за нови знания или за упражнение 
-
 export function LessonPlan() {
     const [values, setValues] = useState({
         "class": "",
