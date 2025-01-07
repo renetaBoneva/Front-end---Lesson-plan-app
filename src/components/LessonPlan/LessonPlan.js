@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as lessonPlanService from "../../services/lessonPlanService";
 import TextEditor from "./TextEditor/TextEditor";
+import './LessonPlan.css';
 
 export function LessonPlan() {
     const [values, setValues] = useState({
@@ -82,6 +83,7 @@ export function LessonPlan() {
                 console.log(err);
             }
             setIsLoading(false);
+            setIsTouched(false);
         }
     }
 
@@ -267,7 +269,7 @@ export function LessonPlan() {
                 </form>
                 {isLoading
                     ? <p>Loading ...</p>
-                    : lessonPlan && <TextEditor lessonPlan={lessonPlan} />
+                    : <TextEditor lessonPlan={lessonPlan || ""} />
                 }
             </div>
         </>);
