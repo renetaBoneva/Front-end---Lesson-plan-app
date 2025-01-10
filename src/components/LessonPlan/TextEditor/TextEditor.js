@@ -109,7 +109,7 @@ export default class TextEditor extends Component {
 
             {/* Save as PDF Button */}
             <button onClick={this.saveAsPDF}>Save as PDF</button>
-            {/* <button onClick={this.saveAsDOC}>Save as DOC</button> */}
+            <button onClick={this.saveAsDOC}>Save as DOC</button>
         </>
         );
     }
