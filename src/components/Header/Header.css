@@ -2,15 +2,15 @@
 	Navigation
 ---------------*/
 header {
-	display: flex;
+    display: flex;
 	flex-wrap: wrap;
 	align-content: center;
 	justify-content: center;
+    background: #F2F2F2;
 }
 
 nav {
 	width: 100%;
-	background: #F2F2F2;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

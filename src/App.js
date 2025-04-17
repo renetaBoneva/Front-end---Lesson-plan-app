@@ -2,12 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { LessonPlan } from './components/LessonPlan/LessonPlan';
 import { Header } from './components/Header/Header';
+import { Home } from './components/Home/Home';
 
 function App() {
   return (
     <>
       <Header />
-      <h1>Lesson plan with AI</h1>
       <div id="contentWrapper">
         <Routes>
           {/* Изкуственият интелект в организацията на преподавателската дейност */}
@@ -16,6 +16,8 @@ function App() {
           {/* stranica za login */}
           {/* put za logout */}
           <Route path='/generate-lesson-plan' element={<LessonPlan/>} />
+          <Route path='/' element={<Home/>} />
+          <Route path='/home' element={<Home/>} />
         </Routes>
       </div>
     </>
