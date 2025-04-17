@@ -1,0 +1,65 @@
+/*---------------
+	Navigation
+---------------*/
+header {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+}
+
+nav {
+	width: 100%;
+	background: #F2F2F2;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: flex-start;
+	padding-right: 36px;
+}
+
+nav ul li {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	justify-content: center;
+	align-content: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+	text-align: center;
+	/* font-family: 'Philosopher'; */
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 49px;
+	color: #ff5757;
+	display: flex;
+	align-content: center;
+	margin: 0px 16px 0px 16px;
+}
+
+nav ul li a:hover {
+    color: #597ebe;
+    /* color: #0097b2; */
+    text-shadow: 5px 5px 5px #fbb02e;
+}
+
+nav img {
+	height: 100px;
+	margin: 10px 0px 10px 32px;
+}
+
+nav.wrapper {
+	width: 1580px;
+	padding: 0;
+	flex-direction: row;
+	justify-content: space-between;
+}
