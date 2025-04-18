@@ -35,7 +35,6 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
 	text-align: center;
-	/* font-family: 'Philosopher'; */
 	font-style: normal;
 	font-weight: 700;
 	font-size: 24px;
@@ -48,8 +47,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #597ebe;
-    /* color: #0097b2; */
-    text-shadow: 5px 5px 5px #fbb02e;
+    text-shadow: 0px 0px 15px #0097b2;
 }
 
 nav img {
@@ -62,4 +60,52 @@ nav.wrapper {
 	padding: 0;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+
+@media (min-width: 1896px) {
+    header {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    nav img {
+        height: 60px;
+    }
+
+    nav.wrapper {
+        margin: 0px;
+        width: 92%;
+    }
+}
+
+@media (max-width: 1000px) {
+    nav.wrapper {
+        flex-direction: column;
+    }
+
+    nav img {
+        margin: 10px 0px;
+    }
+
+    nav ul {
+        display: none;
+        padding-right: 0px;
+        flex-direction: column;
+    }
+
+    nav:hover #navUL {
+        display: block;
+    }
+
+    nav ul li a {
+        margin: 0px 8px;
+    }
+}
+
+@media (max-width: 680px) {
+    nav ul li a {
+        font-size: 20px;
+        line-height: 36px;
+    }
 }
