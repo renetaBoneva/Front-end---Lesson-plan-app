@@ -1,0 +1,35 @@
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    
+    background-color: #ff5757;
+    color: #0097b2;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+footer:hover {
+    background-color: #0097b2;
+    color: #ff5757;
+    font-weight: bold;
+}
+
+#footerIconsDiv {
+    display: flex;
+    gap: 1em;
+}
+
+footer i {
+    color: #0097b2;
+    font-size: 1.6em;
+}
+
+footer:hover i {
+    color: #ff5757;
+}
+
+footer i:hover {
+    color: #fbb02e;
+}

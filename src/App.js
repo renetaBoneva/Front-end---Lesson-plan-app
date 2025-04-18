@@ -1,8 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
+
 import './App.css';
+
 import { LessonPlan } from './components/LessonPlan/LessonPlan';
 import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
           <Route path='/home' element={<Home/>} />
         </Routes>
       </div>
+      <Footer/>
     </>
   );
 }
