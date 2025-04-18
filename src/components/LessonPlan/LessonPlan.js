@@ -30,7 +30,7 @@ export function LessonPlan() {
     function handleChange(e) {
         // Change Values;
         const { name, type, value, checked } = e.target;
-        
+
         setValues(prevState => ({
             ...prevState,
             [name]: type === 'checkbox' ? checked : value
@@ -67,23 +67,23 @@ export function LessonPlan() {
         }
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         if (!(errors.course || errors.class || errors.theme || errors.type)) {
             setIsLoading(true);
-            try {
-                lessonPlanService.generateMeLessonPlan(values)
-                    .then(res => {
-                        const generatedPlan = res.aiResponse;
 
-                        setLessonPlan(generatedPlan)
-                    })
-            }
-            catch (err) {
+            try {
+                const res = await lessonPlanService.generateMeLessonPlan(values);
+                const generatedPlan = res.aiResponse;
+                setLessonPlan(generatedPlan);
+                console.log(generatedPlan);
+
+            } catch (err) {
                 console.log(err);
+            } finally {
+                setIsLoading(false);
+                setIsTouched(false);
             }
-            setIsLoading(false);
-            setIsTouched(false);
         }
     }
 
