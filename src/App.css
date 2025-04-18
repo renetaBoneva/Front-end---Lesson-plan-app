@@ -1,8 +1,43 @@
+
+
+/*---------------
+General
+---------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main,
+#root {
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow-x: hidden;
+}
+
 #contentWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 80vh;
+
+    font-size: 24px;
+}
+
+.wrapper {
+    max-width: 1896px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 2em;
 }
 
@@ -26,7 +61,13 @@ form button.submitBtn {
     border-radius: 10px;
 }
 
-.errP{
+.errP {
     color: red;
     margin: 0;
+}
+
+@media (min-width: 1896px) {
+    #contentWrapper {
+        min-height: 90vh;
+    }
 }
