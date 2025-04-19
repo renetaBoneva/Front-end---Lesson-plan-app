@@ -98,19 +98,22 @@ export default class TextEditor extends Component {
     render() {
         const { editorState } = this.state;
 
-        return (<>
-            <Editor
-                editorState={editorState}
-                toolbarClassName="toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
-                onEditorStateChange={this.onEditorStateChange}
-            />
+        return (
+            <div className="editWrapper">
+                <div className="editBtnsWrapper">
+                    {/* Save as PDF Button */}
+                    <button className="btn2" onClick={this.saveAsPDF}>Save as PDF</button>
+                    <button className="btn1" onClick={this.saveAsDOC}>Save as DOC</button>
+                </div>
 
-            {/* Save as PDF Button */}
-            <button onClick={this.saveAsPDF}>Save as PDF</button>
-            <button onClick={this.saveAsDOC}>Save as DOC</button>
-        </>
+                <Editor
+                    editorState={editorState}
+                    toolbarClassName="toolbarClassName"
+                    wrapperClassName="wrapperClassName"
+                    editorClassName="editorClassName"
+                    onEditorStateChange={this.onEditorStateChange}
+                />
+            </div>
         );
     }
 }

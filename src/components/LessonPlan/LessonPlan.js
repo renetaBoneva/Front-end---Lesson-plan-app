@@ -88,8 +88,8 @@ export function LessonPlan() {
     }
 
     return (
-        <>
-            <h2>Generate lecture plan</h2>
+        <div className="wrapper">
+            <h2>Генерирай плaн-конспект</h2>
             <div className="lessonPlanWrapper">
                 <form onSubmit={handleSubmit}>
                     {errors.class && <p className="errP">{errors.class}</p>}
@@ -263,7 +263,7 @@ export function LessonPlan() {
                         value={values.notes}
                         onChange={handleChange} />
 
-                    <button className="submitBtn" type="submit" disabled={!isTouched || (errors.class || errors.course || errors.theme)}>
+                    <button className="submitBtn btn2" type="submit" disabled={!isTouched || (errors.class || errors.course || errors.theme)}>
                         Генерирай
                     </button>
                 </form>
@@ -272,5 +272,5 @@ export function LessonPlan() {
                     : <TextEditor lessonPlan={lessonPlan || ""} />
                 }
             </div>
-        </>);
+        </div>);
 }

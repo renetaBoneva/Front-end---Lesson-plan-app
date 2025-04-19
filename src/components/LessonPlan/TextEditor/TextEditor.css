@@ -3,3 +3,16 @@
     max-height: 700px;
     width: 65%;
 }
+
+.editWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.editBtnsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1em;
+}
