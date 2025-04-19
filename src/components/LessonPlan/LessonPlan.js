@@ -1,7 +1,9 @@
 import { useState } from "react";
+
+import './LessonPlan.css';
 import * as lessonPlanService from "../../services/lessonPlanService";
 import TextEditor from "./TextEditor/TextEditor";
-import './LessonPlan.css';
+import { Loading } from "../Loading/Loading";
 
 export function LessonPlan() {
     const [values, setValues] = useState({
@@ -89,7 +91,7 @@ export function LessonPlan() {
 
     return (
         <div className="wrapper">
-            <h2>Генерирай плaн-конспект</h2>
+            <h2 id="lp">Генерирай плaн-конспект</h2>
             <div className="lessonPlanWrapper">
                 <form onSubmit={handleSubmit}>
                     {errors.class && <p className="errP">{errors.class}</p>}
@@ -268,7 +270,7 @@ export function LessonPlan() {
                     </button>
                 </form>
                 {isLoading
-                    ? <p>Loading ...</p>
+                    ? <Loading />
                     : <TextEditor lessonPlan={lessonPlan || ""} />
                 }
             </div>

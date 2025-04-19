@@ -1,0 +1,36 @@
+#loadingWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 35vh 0;
+    min-width: 50vw;
+}
+
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border-radius: 50%;
+    background: conic-gradient(#0097b2 25%, #ff5757 0 50%, #597ebe 0 75%, #fbb02e 0);
+    animation: l22 2s infinite linear;
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 15%;
+    border-radius: 50%;
+    background: inherit;
+    animation: inherit;
+}
+
+.loader::after {
+    margin: 25%;
+    animation-duration: 3s;
+}
+
+@keyframes l22 {
+    100% {
+        transform: rotate(1turn)
+    }
+}
