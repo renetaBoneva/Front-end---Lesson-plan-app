@@ -102,8 +102,8 @@ export default class TextEditor extends Component {
             <div className="editWrapper">
                 <div className="editBtnsWrapper">
                     {/* Save as PDF Button */}
-                    <button className="btn2" onClick={this.saveAsPDF}>Save as PDF</button>
-                    <button className="btn1" onClick={this.saveAsDOC}>Save as DOC</button>
+                    <button className="btn2" onClick={this.saveAsPDF}>Запази като PDF</button>
+                    <button className="btn1" onClick={this.saveAsDOC}>Запази като DOC</button>
                 </div>
 
                 <Editor

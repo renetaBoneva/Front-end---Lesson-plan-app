@@ -1,10 +1,10 @@
-h2#lp{
+h2#lp {
     color: #ff5757;
     text-shadow: 1px 1px 0 #0097b2;
 }
+
 .lessonPlanWrapper {
     width: 100%;
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -16,8 +16,28 @@ h2#lp{
     width: 35%;
 }
 
+.LesPlanCheckBoxWrapper label {
+    color: #0097b2;
+    margin-left: 0.5em;
+}
+
 .lessonPlanWrapper form button:hover {
     cursor: pointer;
     box-shadow: 0px 0px 10px rgb(191, 187, 187);
     border: 3px solid burlywood;
+}
+
+@media (max-width: 1000px) {
+    .lessonPlanWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .editWrapper {
+        flex-direction: column-reverse;
+    }
+
+    .lessonPlanWrapper form {
+        width: 80%;
+    }
 }

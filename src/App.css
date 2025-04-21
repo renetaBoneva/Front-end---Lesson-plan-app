@@ -45,45 +45,46 @@ h1 {
 
 h2 {
     padding-bottom: 1em;
+    text-align: center;
 }
 
-button{
+button {
     font-size: 20px;
     padding: 0.2em 0.8em;
     border-radius: 0.3em;
     border: none;
 }
 
-button:hover {    
+button:hover {
     cursor: pointer;
 }
 
 button.btn1 {
-    border: 0.2em #fbb02e;    
+    border: 0.2em #fbb02e;
     font-weight: bold;
-    background-color:#fbb02e;
+    background-color: #fbb02e;
     color: #597ebe;
 }
 
 button.btn1:hover {
     border: 0.2em #fbb02e;
-    background-color:#597ebe;
+    background-color: #597ebe;
     color: #fbb02e;
-    box-shadow: 0px 0px 5px #fbb02e ;
+    box-shadow: 0px 0px 5px #fbb02e;
 }
 
 
 button.btn2 {
-    border: 0.2em #ff5757;    
+    border: 0.2em #ff5757;
     font-weight: bold;
-    background-color:#ff5757;
+    background-color: #ff5757;
     color: #0097b2;
-    text-shadow: 1px 1px 0#fbb02e;
+    /* text-shadow: 1px 1px 0#fbb02e; */
 }
 
 button.btn2:hover {
     border-color: #0097b2;
-    background-color:#0097b2;
+    background-color: #0097b2;
     color: #fbb02e;
     box-shadow: 0px 0px 5px #0097b2;
 }
@@ -92,11 +93,53 @@ button.btn2:hover {
 form {
     display: flex;
     flex-direction: column;
+    font-size: 0.8em;
     gap: 0.5em;
 }
 
-form label {
+form label,
+form legend {
     margin-top: 0.5em;
+    font-weight: bold;
+    color: #597ebe;
+}
+
+form fieldset,
+form input,
+form select,
+form textarea {
+    font-size: 1em;
+    border-radius: 0.5em;
+    padding: 0.5em 0.7em;
+    border: 1px solid #fbb02e;
+    outline: none;
+    color: #0097b2;
+}
+
+form textarea {
+    height: 10em;
+    border: 1px solid #fbb02e;
+    font-size: 1em;
+    color: #0097b2;
+}
+
+form fieldset:focus,
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border: 1px solid #0097b2;
+}
+
+form fieldset div {
+    padding-bottom: 0.8em;
+}
+
+input[type="checkbox"]:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #ff5757;
 }
 
 form button.submitBtn {
@@ -104,8 +147,12 @@ form button.submitBtn {
     border-radius: 10px;
 }
 
+.requiredStart {
+    color: #ff5757;
+}
+
 .errP {
-    color: red;
+    color: #ff5757;
     margin: 0;
 }
 
@@ -120,6 +167,19 @@ form button.submitBtn {
     #contentWrapper {
         font-size: 24px;
     }
+
+    form {
+        width: 70%;
+        font-size: 24px;
+    }
+
+    form fieldset div {
+        padding-bottom: 0.8em;
+    }
 }
 
-@media (max-width: 680px) {}
+@media (max-width: 680px) {
+    .wrapper {
+        padding: 2em 1em;
+    }
+}

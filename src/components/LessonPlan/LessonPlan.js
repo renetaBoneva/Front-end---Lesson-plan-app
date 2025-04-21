@@ -94,8 +94,7 @@ export function LessonPlan() {
             <h2 id="lp">Генерирай плaн-конспект</h2>
             <div className="lessonPlanWrapper">
                 <form onSubmit={handleSubmit}>
-                    {errors.class && <p className="errP">{errors.class}</p>}
-                    <label htmlFor="class">Клас*</label>
+                    <label htmlFor="class">Клас<span className="requiredStart">*</span></label>
                     <select name="class"
                         value={values.class}
                         onChange={handleChange}
@@ -114,9 +113,9 @@ export function LessonPlan() {
                         <option value="11">11</option>
                         <option value="12">12</option>
                     </select>
+                    {errors.class && <p className="errP">{errors.class}</p>}
 
-                    {errors.course && <p className="errP">{errors.course}</p>}
-                    <label htmlFor="course">Предмет*</label>
+                    <label htmlFor="course">Предмет<span className="requiredStart">*</span></label>
                     <input
                         type="text"
                         name="course"
@@ -124,9 +123,9 @@ export function LessonPlan() {
                         onChange={handleChange}
                         onBlur={handleIsValid}
                     />
+                    {errors.course && <p className="errP">{errors.course}</p>}
 
-                    {errors.theme && <p className="errP">{errors.theme}</p>}
-                    <label htmlFor="theme">Тема на урок*</label>
+                    <label htmlFor="theme">Тема на урок<span className="requiredStart">*</span></label>
                     <input
                         type="text"
                         name="theme"
@@ -134,10 +133,10 @@ export function LessonPlan() {
                         onChange={handleChange}
                         onBlur={handleIsValid}
                     />
+                    {errors.theme && <p className="errP">{errors.theme}</p>}
 
 
-                    {errors.type && <p className="errP">{errors.type}</p>}
-                    <label htmlFor="type">Тип на урока</label>
+                    <label htmlFor="type">Тип на урока<span className="requiredStart">*</span></label>
                     <select
                         name="type"
                         value={values.type}
@@ -148,6 +147,7 @@ export function LessonPlan() {
                         <option value="За нови знания">За нови знания</option>
                         <option value="За упражнение">За упражнение</option>
                     </select>
+                    {errors.type && <p className="errP">{errors.type}</p>}
 
                     <label htmlFor="time">Продължителност</label>
                     <select
@@ -265,7 +265,7 @@ export function LessonPlan() {
                         value={values.notes}
                         onChange={handleChange} />
 
-                    <button className="submitBtn btn2" type="submit" disabled={!isTouched || (errors.class || errors.course || errors.theme)}>
+                    <button className="submitBtn btn1" type="submit" disabled={!isTouched || (errors.class || errors.course || errors.theme)}>
                         Генерирай
                     </button>
                 </form>
