@@ -6,6 +6,7 @@ import { LessonPlan } from './components/LessonPlan/LessonPlan';
 import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
+import { Login } from './components/User/Login/Login';
 
 function App() {
   return (
@@ -18,12 +19,15 @@ function App() {
           {/* stranica za registraciq */}
           {/* stranica za login */}
           {/* put za logout */}
-          <Route path='/generate-lesson-plan' element={<LessonPlan/>} />
-          <Route path='/' element={<Home/>} />
-          <Route path='/home' element={<Home/>} />
+          <Route path='/' element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/generate-lesson-plan' element={<LessonPlan />} />
+
+          <Route path='/login' element={<Login />} />
+
         </Routes>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }
