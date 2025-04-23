@@ -17,15 +17,13 @@ function App() {
         <Routes>
           {/* Изкуственият интелект в организацията на преподавателската дейност */}
           {/* stranica za generirane na plan konspekti za cqlata godina */}
-          {/* stranica za registraciq */}
-          {/* stranica za login */}
-          {/* put za logout */}
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
           <Route path='/generate-lesson-plan' element={<LessonPlan />} />
 
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          {/* put za logout */}
 
         </Routes>
       </div>

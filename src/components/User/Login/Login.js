@@ -69,6 +69,7 @@ export function Login() {
                 <input
                     type="email"
                     name="email"
+                    autoComplete="your-email"
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleIsValid}
@@ -80,6 +81,7 @@ export function Login() {
                 <input
                     type="password"
                     name="password"
+                    autoComplete="your-password"
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleIsValid}

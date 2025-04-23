@@ -33,40 +33,45 @@ export function LessonPlan() {
         // Change Values;
         const { name, type, value, checked } = e.target;
 
-        setValues(prevState => ({
-            ...prevState,
+        const newValues = {
+            ...values,
             [name]: type === 'checkbox' ? checked : value
-        }));
+        };
 
+        setValues(newValues);
         //Validate some values
-        handleIsValid(e);
+        handleIsValid(newValues);
     }
 
-    function handleIsValid(e) {
+    function handleIsValid(newValues) {
         setIsTouched(true);
-        if (values.class === "") {
-            setErrors(state => ({ ...state, "class": "Въведете клас!" }))
+        let newErrors = errors;
+
+        if (newValues.class === "") {
+            newErrors.class = "Въведете клас!";
         } else {
-            setErrors(state => ({ ...state, "class": "" }))
+            newErrors.class = "";
         }
 
-        if (values.course === "") {
-            setErrors(state => ({ ...state, "course": "Въведете предмет!" }))
+        if (newValues.course === "") {
+            newErrors.course = "Въведете предмет!";
         } else {
-            setErrors(state => ({ ...state, "course": "" }))
+            newErrors.course = "";
         }
 
-        if (values.theme === "") {
-            setErrors(state => ({ ...state, "theme": "Въведете тема на урока!" }))
+        if (newValues.theme === "") {
+            newErrors.theme = "Въведете тема на урока!";
         } else {
-            setErrors(state => ({ ...state, "theme": "" }))
+            newErrors.theme = "";
         }
 
-        if (values.type === "") {
-            setErrors(state => ({ ...state, "type": "Въведете тип на урока!" }))
+        if (newValues.type === "") {
+            newErrors.type = "Въведете тип на урока!";
         } else {
-            setErrors(state => ({ ...state, "type": "" }))
+            newErrors.type = "";
         }
+        
+        setErrors(newErrors);
     }
 
     async function handleSubmit(e) {
@@ -99,7 +104,7 @@ export function LessonPlan() {
                         value={values.class}
                         onChange={handleChange}
                         onBlur={handleIsValid}>
-                        <option value="" disabled>--- Select class ---</option>
+                        <option value="" disabled>--- Избери клас ---</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -119,6 +124,7 @@ export function LessonPlan() {
                     <input
                         type="text"
                         name="course"
+                        autoComplete="class"
                         value={values.course}
                         onChange={handleChange}
                         onBlur={handleIsValid}
@@ -143,7 +149,7 @@ export function LessonPlan() {
                         onChange={handleChange}
                         onBlur={handleIsValid}
                     >
-                        <option value="" disabled>--- Select lesson type ---</option>
+                        <option value="" disabled>--- Избери тип на урока ---</option>
                         <option value="За нови знания">За нови знания</option>
                         <option value="За упражнение">За упражнение</option>
                     </select>
