@@ -1,0 +1,19 @@
+#registerForm {
+    min-width: 450px;
+    background: #F2F2F2;
+    border-radius: 0.5em;
+    padding: 2.5em 3em;
+    border: 1px solid #fbb02e;
+}
+
+#registerForm h2 {
+    color: #ff5757;
+    text-shadow: 1px 1px 0 #0097b2;
+}
+
+@media (max-width: 680px) {
+    #registerForm {
+        width: 90vw;
+        padding: 1.5em 1em;        
+    }
+}

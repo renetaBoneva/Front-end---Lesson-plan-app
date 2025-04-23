@@ -7,6 +7,7 @@ import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
 import { Login } from './components/User/Login/Login';
+import { Register } from './components/User/Register/register';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/generate-lesson-plan' element={<LessonPlan />} />
 
+          <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
 
         </Routes>

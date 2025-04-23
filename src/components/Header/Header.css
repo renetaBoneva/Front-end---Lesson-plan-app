@@ -3,46 +3,46 @@
 ---------------*/
 header {
     display: flex;
-	flex-wrap: wrap;
-	align-content: center;
-	justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
     background: #F2F2F2;
 }
 
 nav {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 nav ul {
-	display: flex;
-	flex-wrap: wrap;
-	align-content: center;
-	justify-content: flex-start;
-	padding-right: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    padding-right: 36px;
 }
 
 nav ul li {
-	display: flex;
-	flex-wrap: wrap;
-	list-style: none;
-	justify-content: center;
-	align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: center;
+    align-content: center;
 }
 
 nav ul li a {
     text-decoration: none;
-	text-align: center;
-	font-style: normal;
-	font-weight: 700;
-	font-size: 24px;
-	line-height: 49px;
-	color: #ff5757;
-	display: flex;
-	align-content: center;
-	margin: 0px 16px 0px 16px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 49px;
+    color: #ff5757;
+    display: flex;
+    align-content: center;
+    margin: 0px 16px 0px 16px;
 }
 
 nav ul li a:hover {
@@ -51,15 +51,15 @@ nav ul li a:hover {
 }
 
 nav img {
-	height: 100px;
-	margin: 10px 0px 10px 32px;
+    height: 100px;
+    margin: 10px 0px 10px 32px;
 }
 
 nav.wrapper {
-	width: 1580px;
-	padding: 0;
-	flex-direction: row;
-	justify-content: space-between;
+    width: 1580px;
+    padding: 0;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
@@ -100,6 +100,7 @@ nav.wrapper {
 
     nav ul li a {
         margin: 0px 8px;
+        font-size: 24px;
     }
 }
 
