@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Register.css';
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 export function Register() {
     const [values, setValues] = useState({
@@ -7,10 +8,11 @@ export function Register() {
         "password": "",
         "rePass": "",
         "course": "",
-        "class": "",
+        "classNum": "",
     });
     const [errors, setErrors] = useState({});
     const [isTouched, setIsTouched] = useState(false);
+    const { onRegisterHandler } = useAuthContext();
 
     function handleChange(e) {
         // Change Values;
@@ -29,29 +31,37 @@ export function Register() {
         let newErrors = errors;
 
         if (newValues.email === "") {
-            newErrors.email= "Въведете имейл!";
+            newErrors.email = "Въведете имейл!";
         } else {
-            newErrors.email= "";
-        }
-
-        if (newValues.course === "") {
-            newErrors.course= "Въведете предмет!";
-        } else {
-            newErrors.course= "";
+            newErrors.email = "";
         }
 
         if (newValues.password === "") {
-            newErrors.password= "Въведете парола!";
+            newErrors.password = "Въведете парола!";
+        }else if (newValues.password?.trim().length < 5) {
+            newErrors.password = "Паролата трябва да бъде дълга поне 5 символа!";
         } else {
-            newErrors.password= "";
+            newErrors.password = "";
         }
 
         if (newValues.rePass === "") {
-            newErrors.rePass= "Въведете повторна парола!";
+            newErrors.rePass = "Въведете повторна парола!";
         } else if (newValues.password !== newValues.rePass) {
-            newErrors.rePass= "Повторната парола не съвпада с паролата!";
+            newErrors.rePass = "Повторната парола не съвпада с паролата!";
         } else {
-            newErrors.rePass= "";
+            newErrors.rePass = "";
+        }
+
+        if (newValues.course === "") {
+            newErrors.course = "Въведете предмет!";
+        } else {
+            newErrors.course = "";
+        }
+
+        if (newValues.classNum && !Number(newValues.classNum)) {
+            newErrors.classNum = 'Невалидна стойност за "Клас"';
+        } else {
+            newErrors.classNum = "";
         }
 
         setErrors(newErrors);
@@ -59,21 +69,14 @@ export function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (!(errors.password || errors.email)) {
-            // setIsLoading(true);
+        handleIsValid(values);
 
-            try {
-                // const res = await lessonPlanService.generateMeLessonPlan(values);
-                // const generatedPlan = res.aiResponse;
-                // setLessonPlan(generatedPlan);
-                console.log(values);
-
-            } catch (err) {
-                console.log(err);
-            } finally {
-                // setIsLoading(false);
-                setIsTouched(false);
-            }
+        if (!(errors.email
+            || errors.password
+            || errors.rePass
+            || errors.className
+            || errors.course)) {
+            onRegisterHandler(values);
         }
     }
 
@@ -105,9 +108,9 @@ export function Register() {
                 />
                 {errors.course && <p className="errP">{errors.course}</p>}
 
-                <label htmlFor="class">Клас</label>
-                <select name="class"
-                    value={values.class}
+                <label htmlFor="classNum">Клас</label>
+                <select name="classNum"
+                    value={values.classNum}
                     onChange={handleChange}
                     onBlur={handleIsValid}
                 >
@@ -125,6 +128,7 @@ export function Register() {
                     <option value="11">11</option>
                     <option value="12">12</option>
                 </select>
+                {errors.classNum && <p className="errP">{errors.classNum}</p>}
 
                 <label htmlFor="password">Парола<span className="requiredStart">*</span></label>
                 <input
@@ -150,7 +154,12 @@ export function Register() {
 
 
                 <button className="submitBtn btn2" type="submit"
-                    disabled={!isTouched || (errors.email || errors.password || errors.rePass || errors.course)}
+                    disabled={!isTouched || (
+                        errors.email
+                        || errors.password
+                        || errors.rePass
+                        || errors.className
+                        || errors.course)}
                 >
                     Регистрация
                 </button>

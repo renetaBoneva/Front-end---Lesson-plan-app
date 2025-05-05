@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Login.css';
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 export function Login() {
     const [values, setValues] = useState({
@@ -8,6 +9,7 @@ export function Login() {
     });
     const [errors, setErrors] = useState({});
     const [isTouched, setIsTouched] = useState(false);
+    const { onLoginHandler } = useAuthContext();
 
     function handleChange(e) {
         // Change Values;
@@ -19,27 +21,18 @@ export function Login() {
         }));
 
         //Validate some values
-        handleIsValid(e);       
+        handleIsValid(e);
     }
 
 
     async function handleSubmit(e) {
         e.preventDefault();
         if (!(errors.password || errors.email)) {
-            // setIsLoading(true);
-
-            try {
-                // const res = await lessonPlanService.generateMeLessonPlan(values);
-                // const generatedPlan = res.aiResponse;
-                // setLessonPlan(generatedPlan);
-                console.log(values);
-
-            } catch (err) {
-                console.log(err);
-            } finally {
-                // setIsLoading(false);
-                setIsTouched(false);
-            }
+            // onLoginHandler
+            onLoginHandler({
+                email: values.email,
+                password: values.password,
+            })
         }
     }
 
@@ -51,7 +44,7 @@ export function Login() {
         } else {
             setErrors(state => ({ ...state, "email": "" }))
         }
-        
+
         if (values.password === "") {
             setErrors(state => ({ ...state, "password": "Въведете парола!" }))
         } else {

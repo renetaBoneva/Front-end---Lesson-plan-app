@@ -13,6 +13,7 @@ async function Req(method, url, data) {
             options.body = JSON.stringify(data);
         }
     }
+    
     const res = await fetch(`${serverAPI}${url}`, options);
 
     if (!res.ok) {
