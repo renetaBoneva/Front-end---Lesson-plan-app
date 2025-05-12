@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 
 import './Header.css';
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export function Header() {
+    const { isAuthenticated, _userID } = useAuthContext();
     return (
         <header>
             <nav className="wrapper">
@@ -16,19 +18,20 @@ export function Header() {
                 <div>
                     <ul id="navUL">
                         <li><Link to="/generate-lesson-plan">Генерирай план-конспект</Link></li>
-                        <li><Link to="/login">Вход</Link></li>
-                        <li><Link to="/register">Регистрация</Link></li>
-                        {/* <!-- Logged in user menu --> */}
                         {/* <!-- Guest menu --> */}
-                        {/* {isAuthenticated ? (
+                        {isAuthenticated ? (
                             <>
-                                <li><Link to={`/users/${userId}/profile`}>My profile</Link></li>
-                                <li><Link to="/logout">Logout</Link></li>
+                            {/* <!-- Logged in user menu --> */}
+                                <li><Link to={`/users/${_userID}/profile`}>Моя профил</Link></li>
+                                <li><Link to="/logout">Изход</Link></li>
                             </>)
                             : (
                                 <>
+                                {/* <!-- Logged out user menu --> */}
+                                <li><Link to="/login">Вход</Link></li>
+                                <li><Link to="/register">Регистрация</Link></li>
                                 </>
-                            )} */}
+                            )}
                     </ul>
                 </div>
             </nav>
