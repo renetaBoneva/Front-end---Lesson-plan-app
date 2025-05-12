@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import { AuthProvider } from './contexts/AuthContext';
+import { IsAuthenticated } from './components/common/IsAuthenticated/IsAuthenticated';
+import { IsNotAuthenticated } from './components/common/IsNotAuthenticated/IsNotAuthenticated';
 import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { LessonPlan } from './components/LessonPlan/LessonPlan';
@@ -24,10 +26,18 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/generate-lesson-plan' element={<LessonPlan />} />
 
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
+            <Route element={<IsNotAuthenticated />}>
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+            </Route>
+            <Route element={<IsAuthenticated />}>
+              {/* profile page */}
+              <Route path='/profile' />
+              
+            </Route>
             <Route path='/logout' element={<Logout />} />
 
+            {/* <Route path='*' element={<NotFound />} /> */}
           </Routes>
         </div>
         <Footer />
