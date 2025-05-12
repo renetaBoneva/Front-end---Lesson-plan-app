@@ -4,7 +4,7 @@ import './Header.css';
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 export function Header() {
-    const { isAuthenticated, _userID } = useAuthContext();
+    const { isAuthenticated } = useAuthContext();
     return (
         <header>
             <nav className="wrapper">
@@ -22,7 +22,7 @@ export function Header() {
                         {isAuthenticated ? (
                             <>
                             {/* <!-- Logged in user menu --> */}
-                                <li><Link to={`/users/${_userID}/profile`}>Моя профил</Link></li>
+                                <li><Link to={`/profile`}>Моя профил</Link></li>
                                 <li><Link to="/logout">Изход</Link></li>
                             </>)
                             : (

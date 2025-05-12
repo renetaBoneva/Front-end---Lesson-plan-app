@@ -53,8 +53,6 @@ export function AuthProvider({ children }) {
 
     const context = {
         userState,
-        _userID: userState?._userID,
-        course: userState?.course,
         onLoginHandler,
         onRegisterHandler,
         onLogoutHandler,

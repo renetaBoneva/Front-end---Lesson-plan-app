@@ -7,7 +7,7 @@ import { Loading } from "../Loading/Loading";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 export function LessonPlan() {
-    const userState = useAuthContext();
+    const { userState } = useAuthContext();
     const [values, setValues] = useState({
         "class": "",
         "course": userState?.course || "",
@@ -30,8 +30,8 @@ export function LessonPlan() {
     const [lessonPlan, setLessonPlan] = useState("");
     const [isTouched, setIsTouched] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    
-    
+
+
     function handleChange(e) {
         console.log(userState);
         console.log(values);
@@ -75,7 +75,7 @@ export function LessonPlan() {
         } else {
             newErrors.type = "";
         }
-        
+
         setErrors(newErrors);
     }
 
