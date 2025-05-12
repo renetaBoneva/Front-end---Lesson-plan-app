@@ -8,9 +8,10 @@ const userSlice = createSlice({
     reducers: {
         addUser(state, action) {
             const user = action.payload.user;
+
             if (user) {
-                const { _userID, email, accessToken } = user;
-                const newState = { _userID, email, accessToken };
+                const { _userID, email, course, accessToken } = user;
+                const newState = { _userID, email, course, accessToken };
                 
                 return newState;
             }

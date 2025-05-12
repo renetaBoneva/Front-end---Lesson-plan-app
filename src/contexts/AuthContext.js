@@ -17,10 +17,10 @@ export function AuthProvider({ children }) {
 
     async function onLoginHandler({ email, password }) {
         try {
-            const user = await authService.login({ email, password });
+            const user = await authService.login({ email, password });            
 
             // Set user's data
-            dispatch(addUser({ ...user }));
+            dispatch(addUser({ user }));
 
             navigate('/');
             // dispatch(stopLoading());
@@ -36,10 +36,7 @@ export function AuthProvider({ children }) {
             const registerData = { email, course, password, rePass, classNum };
             const user = await authService.register(registerData);
 
-            console.log("register user");
-            console.log(user);
-
-            dispatch(addUser({ ...user }));
+            dispatch(addUser({ user }));
             navigate('/');
             // dispatch(stopLoading());
         } catch (err) {

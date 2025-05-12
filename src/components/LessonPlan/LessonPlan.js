@@ -4,11 +4,13 @@ import './LessonPlan.css';
 import * as lessonPlanService from "../../services/lessonPlanService";
 import TextEditor from "./TextEditor/TextEditor";
 import { Loading } from "../Loading/Loading";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export function LessonPlan() {
+    const userState = useAuthContext();
     const [values, setValues] = useState({
         "class": "",
-        "course": "",
+        "course": userState?.course || "",
         "theme": "",
         "type": "",
         "time": "40",
@@ -28,8 +30,11 @@ export function LessonPlan() {
     const [lessonPlan, setLessonPlan] = useState("");
     const [isTouched, setIsTouched] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-
+    
+    
     function handleChange(e) {
+        console.log(userState);
+        console.log(values);
         // Change Values;
         const { name, type, value, checked } = e.target;
 
