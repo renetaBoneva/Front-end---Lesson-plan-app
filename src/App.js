@@ -30,9 +30,10 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
             </Route>
+
             <Route element={<IsAuthenticated />}>
               {/* profile page */}
-              <Route path='/profile' />
+              <Route path='/profile' element={<h3>Profile page</h3>}/>
               
             </Route>
             <Route path='/logout' element={<Logout />} />

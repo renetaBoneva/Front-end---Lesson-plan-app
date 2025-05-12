@@ -5,7 +5,7 @@ export function IsNotAuthenticated() {
     const { isAuthenticated } = useAuthContext();
 
     if(isAuthenticated){
-        return <Navigate to={`/profile`} />
+        return <Navigate to={`/`} />
     }
 
     return <Outlet />

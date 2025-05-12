@@ -21,15 +21,15 @@ export function Header() {
                         {/* <!-- Guest menu --> */}
                         {isAuthenticated ? (
                             <>
-                            {/* <!-- Logged in user menu --> */}
+                                {/* <!-- Logged in user menu --> */}
                                 <li><Link to={`/profile`}>Моя профил</Link></li>
                                 <li><Link to="/logout">Изход</Link></li>
                             </>)
                             : (
                                 <>
-                                {/* <!-- Logged out user menu --> */}
-                                <li><Link to="/login">Вход</Link></li>
-                                <li><Link to="/register">Регистрация</Link></li>
+                                    {/* <!-- Logged out user menu --> */}
+                                    <li><Link to="/login">Вход</Link></li>
+                                    <li><Link to="/register">Регистрация</Link></li>
                                 </>
                             )}
                     </ul>
