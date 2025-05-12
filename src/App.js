@@ -6,8 +6,9 @@ import { AuthProvider } from './contexts/AuthContext';
 import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { LessonPlan } from './components/LessonPlan/LessonPlan';
-import { Login } from './components/User/Login/Login';
 import { Register } from './components/User/Register/register';
+import { Login } from './components/User/Login/Login';
+import { Logout } from './components/User/Logout/Logout';
 import { Footer } from './components/Footer/Footer';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
 
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
-            {/* put za logout */}
+            <Route path='/logout' element={<Logout />} />
 
           </Routes>
         </div>

@@ -24,7 +24,6 @@ export function Login() {
         handleIsValid(e);
     }
 
-
     async function handleSubmit(e) {
         e.preventDefault();
         if (!(errors.password || errors.email)) {
