@@ -4,7 +4,7 @@ import './Error.css';
 export function Error() {
     return <>
         <h2 className='errParagraph'>Something went wrong...</h2>
-        <img src="errorPageImg.png" id="errorImg"/>
+        <img src="errorPageImg.png" id="errorImg" alt='errImg'/>
         <h2 className='errParagraph'>Go back to <Link to={`/`}>home page</Link></h2>
     </>;
 }
