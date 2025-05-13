@@ -10,8 +10,10 @@ import { Home } from './components/Home/Home';
 import { LessonPlan } from './components/LessonPlan/LessonPlan';
 import { Register } from './components/User/Register/register';
 import { Login } from './components/User/Login/Login';
+import { MyProfile } from './components/User/MyProfile/MyProfile';
 import { Logout } from './components/User/Logout/Logout';
 import { Footer } from './components/Footer/Footer';
+import { Error } from './components/common/Error/Error';
 
 function App() {
   return (
@@ -22,6 +24,11 @@ function App() {
           <Routes>
             {/* Изкуственият интелект в организацията на преподавателската дейност */}
             {/* stranica za generirane na plan konspekti za cqlata godina */}
+            {/* stranica za generirane na testove */}
+            {/* Da opravq poleto za redaktirane na text */}
+            {/* Edit na profile */}
+            {/* Delete na profile */}
+            {/* Home page design */}
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
             <Route path='/generate-lesson-plan' element={<LessonPlan />} />
@@ -33,12 +40,12 @@ function App() {
 
             <Route element={<IsAuthenticated />}>
               {/* profile page */}
-              <Route path='/profile' element={<h3>Profile page</h3>}/>
-              
+              <Route path='/profile' element={<MyProfile />} />
+
             </Route>
             <Route path='/logout' element={<Logout />} />
 
-            {/* <Route path='*' element={<NotFound />} /> */}
+            <Route path='*' element={<Error />} />
           </Routes>
         </div>
         <Footer />

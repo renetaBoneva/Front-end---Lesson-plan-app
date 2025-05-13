@@ -1,0 +1,9 @@
+#errorImg {
+    width: 10vw;
+    border-radius: 0.5em;
+    margin: 1em 0;
+}
+
+.errParagraph, .errParagraph a {
+    color: #fbb02e;
+}
