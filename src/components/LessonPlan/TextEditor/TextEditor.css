@@ -16,3 +16,13 @@
     justify-content: flex-end;
     gap: 1em;
 }
+
+/* ------- Text editor css ------  */
+.rdw-editor-toolbar {
+    border: 1px solid #fbb02e;
+}
+
+.rdw-editor-main {
+    border: 1px solid #fbb02e;
+    padding: 1em 2em;
+}

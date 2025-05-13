@@ -112,6 +112,13 @@ export default class TextEditor extends Component {
                     wrapperClassName="wrapperClassName"
                     editorClassName="editorClassName"
                     onEditorStateChange={this.onEditorStateChange}
+                    toolbar={{
+                        options: [
+                            'inline',
+                            'textAlign',
+                            'history',
+                          ],
+                    }}
                 />
             </div>
         );
