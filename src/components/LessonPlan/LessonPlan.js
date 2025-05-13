@@ -33,8 +33,6 @@ export function LessonPlan() {
 
 
     function handleChange(e) {
-        console.log(userState);
-        console.log(values);
         // Change Values;
         const { name, type, value, checked } = e.target;
 
@@ -88,7 +86,6 @@ export function LessonPlan() {
                 const res = await lessonPlanService.generateMeLessonPlan(values);
                 const generatedPlan = res.aiResponse;
                 setLessonPlan(generatedPlan);
-                console.log(generatedPlan);
 
             } catch (err) {
                 console.log(err);

@@ -5,6 +5,7 @@ export function MyProfile() {
     const { userState } = useAuthContext();
     return (<>
         <section className="profileSection">
+            <h2>Моят профил</h2>
             <div className="profileLine">
                 <p className="profileLabel">Имейл: </p>
                 <p className='profileInfo'>{userState.email}</p>

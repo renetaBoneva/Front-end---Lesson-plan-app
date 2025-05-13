@@ -6,6 +6,11 @@
     box-shadow: 0 0 10px #fbb02e;
 }
 
+.profileSection h2 {
+    color: #0097b2;
+    text-shadow: 1px 1px 0 #fbb02e;
+}
+
 .profileLine {
     display: flex;
     flex-direction: column;

@@ -25,7 +25,6 @@ function App() {
             {/* Изкуственият интелект в организацията на преподавателската дейност */}
             {/* stranica za generirane na plan konspekti za cqlata godina */}
             {/* stranica za generirane na testove */}
-            {/* Da opravq poleto za redaktirane na text */}
             {/* Edit na profile */}
             {/* Delete na profile */}
             {/* Home page design */}
@@ -33,13 +32,15 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/generate-lesson-plan' element={<LessonPlan />} />
 
-            <Route element={<IsNotAuthenticated />}>
+            <Route element={<IsNotAuthenticated />}>{/*Routes for guests only*/}
+            
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
+              
             </Route>
 
-            <Route element={<IsAuthenticated />}>
-              {/* profile page */}
+            <Route element={<IsAuthenticated />}>{/*Routes for authenticated users only*/}
+              
               <Route path='/profile' element={<MyProfile />} />
 
             </Route>

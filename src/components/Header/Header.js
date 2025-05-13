@@ -22,7 +22,7 @@ export function Header() {
                         {isAuthenticated ? (
                             <>
                                 {/* <!-- Logged in user menu --> */}
-                                <li><Link to={`/profile`}>Моя профил</Link></li>
+                                <li><Link to={`/profile`}>Моят профил</Link></li>
                                 <li><Link to="/logout">Изход</Link></li>
                             </>)
                             : (
