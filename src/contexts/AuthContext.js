@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
 
     async function onLoginHandler({ email, password }) {
         try {
-            const user = await authService.login({ email, password });            
+            const user = await authService.login({ email, password });
 
             // Set user's data
             dispatch(addUser({ user }));
@@ -51,11 +51,29 @@ export function AuthProvider({ children }) {
         navigate('/');
     }
 
+    async function onUserDeleteHandler() {
+        try {
+            await authService.delUser({
+                "_userID": userState._userID,
+                "accessToken": userState.accessToken
+            });
+
+            dispatch(onUserLogout());
+            navigate('/');
+            // dispatch(stopLoading());
+        } catch (err) {
+            // dispatch(stopLoading());
+            // return toast.error('Incorrect information!');
+            return console.log(err);
+        }
+    }
+
     const context = {
         userState,
         onLoginHandler,
         onRegisterHandler,
         onLogoutHandler,
+        onUserDeleteHandler,
         isAuthenticated: !!userState?.accessToken,
     }
 

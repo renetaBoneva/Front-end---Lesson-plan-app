@@ -26,8 +26,9 @@ function App() {
             {/* stranica za generirane na plan konspekti za cqlata godina */}
             {/* stranica za generirane na testove */}
             {/* Edit na profile */}
-            {/* Delete na profile */}
             {/* Home page design */}
+            {/* Loading */}
+            {/* error handling */}
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
             <Route path='/generate-lesson-plan' element={<LessonPlan />} />

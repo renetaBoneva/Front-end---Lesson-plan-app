@@ -3,6 +3,7 @@ const serverAPI = "http://localhost:3434";
 
 async function Req(method, url, data) {
     const options = {};
+    const accessToken = data?.accessToken;
 
     if (method !== 'GET') {
         options.method = method;
@@ -13,7 +14,11 @@ async function Req(method, url, data) {
             options.body = JSON.stringify(data);
         }
     }
-    
+
+    if (accessToken) {
+        options.headers = { ...options.headers, 'X-Authorization': accessToken }
+    }
+
     const res = await fetch(`${serverAPI}${url}`, options);
 
     if (!res.ok) {

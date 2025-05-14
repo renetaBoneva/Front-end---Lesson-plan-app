@@ -1,4 +1,10 @@
 .profileSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+
     padding: 1em 2em;
     border-radius: 1em;
     background-color: #F2F2F2;
@@ -7,12 +13,31 @@
 }
 
 .profileSection h2 {
+    padding: 0;
     color: #0097b2;
     text-shadow: 1px 1px 0 #fbb02e;
 }
 
+.profileIconsWrapper, #btnsWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileIconsWrapper i {
+    color: #0097b2;
+}
+
+.profileIconsWrapper i:hover {
+    color: #ff5757;
+    cursor: pointer;
+}
+
 .profileLine {
     display: flex;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
