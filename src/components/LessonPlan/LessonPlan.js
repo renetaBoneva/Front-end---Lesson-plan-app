@@ -9,7 +9,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 export function LessonPlan() {
     const { userState } = useAuthContext();
     const [values, setValues] = useState({
-        "class": "",
+        "classNum":  userState?.classNum || "",
         "course": userState?.course || "",
         "theme": "",
         "type": "",
@@ -50,10 +50,10 @@ export function LessonPlan() {
         setIsTouched(true);
         let newErrors = errors;
 
-        if (newValues.class === "") {
-            newErrors.class = "Въведете клас!";
+        if (newValues.classNum === "") {
+            newErrors.classNumNum = "Въведете клас!";
         } else {
-            newErrors.class = "";
+            newErrors.classNumNum = "";
         }
 
         if (newValues.course === "") {
@@ -79,7 +79,7 @@ export function LessonPlan() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (!(errors.course || errors.class || errors.theme || errors.type)) {
+        if (!(errors.course || errors.classNum || errors.theme || errors.type)) {
             setIsLoading(true);
 
             try {
@@ -101,9 +101,9 @@ export function LessonPlan() {
             <h2 id="lp">Генерирай плaн-конспект</h2>
             <div className="lessonPlanWrapper">
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="class">Клас<span className="requiredStart">*</span></label>
-                    <select name="class"
-                        value={values.class}
+                    <label htmlFor="classNum">Клас<span className="requiredStart">*</span></label>
+                    <select name="classNum"
+                        value={values.classNum}
                         onChange={handleChange}
                         onBlur={handleIsValid}>
                         <option value="" disabled>--- Избери клас ---</option>
@@ -120,13 +120,13 @@ export function LessonPlan() {
                         <option value="11">11</option>
                         <option value="12">12</option>
                     </select>
-                    {errors.class && <p className="errP">{errors.class}</p>}
+                    {errors.classNum && <p className="errP">{errors.classNum}</p>}
 
                     <label htmlFor="course">Предмет<span className="requiredStart">*</span></label>
                     <input
                         type="text"
                         name="course"
-                        autoComplete="class"
+                        autoComplete="classNum"
                         value={values.course}
                         onChange={handleChange}
                         onBlur={handleIsValid}
@@ -273,7 +273,7 @@ export function LessonPlan() {
                         value={values.notes}
                         onChange={handleChange} />
 
-                    <button className="submitBtn btn1" type="submit" disabled={!isTouched || (errors.class || errors.course || errors.theme)}>
+                    <button className="submitBtn btn1" type="submit" disabled={!isTouched || (errors.classNum || errors.course || errors.theme)}>
                         Генерирай
                     </button>
                 </form>

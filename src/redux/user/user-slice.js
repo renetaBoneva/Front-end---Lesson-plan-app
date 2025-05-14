@@ -10,8 +10,8 @@ const userSlice = createSlice({
             const user = action.payload.user;
 
             if (user) {
-                const { _userID, email, course, accessToken } = user;
-                const newState = { _userID, email, course, accessToken };
+                const { _userID, email, course, classNum, accessToken } = user;
+                const newState = { _userID, email, course, classNum, accessToken };
                 
                 return newState;
             }
