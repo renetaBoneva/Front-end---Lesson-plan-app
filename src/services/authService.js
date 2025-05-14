@@ -6,8 +6,4 @@ export const register = async (registerData) => requester.post('/register', regi
 
 export const delUser = async (userState) => requester.delete(`/users/${userState._userID}`, userState)
 
-// export const logout = async () => requester.get('/logout');
-
-// export const getUserById = async (_userID) => requester.get(`/users/${_userID}`);
-
-// export const isValidAccessToken = async () => requester.post('/token/isValid');
+export const editUser = async (reqData) => requester.put(`/users/${reqData._userID}`, reqData)

@@ -68,12 +68,39 @@ export function AuthProvider({ children }) {
         }
     }
 
+    async function onEditHandler(newData) {
+        try {
+            newData = {
+                "email": newData.email,
+                "course": newData.course,
+                "classNum": newData.classNum,
+            };
+
+            const user = await authService.editUser({
+                newData,
+                "_userID": userState._userID,
+                "accessToken": userState.accessToken
+            });
+            
+            dispatch(addUser({ user }));
+
+            navigate('/profile');
+            // dispatch(stopLoading());
+        } catch (err) {
+            // dispatch(stopLoading());
+            // return toast.error('Incorrect information!');
+            return console.log(err);
+        }
+
+    }
+
     const context = {
         userState,
         onLoginHandler,
         onRegisterHandler,
         onLogoutHandler,
         onUserDeleteHandler,
+        onEditHandler,
         isAuthenticated: !!userState?.accessToken,
     }
 

@@ -3,10 +3,11 @@ import { useAuthContext } from "../../../hooks/useAuthContext";
 import { useState } from 'react';
 
 export function MyProfile() {
-    const { userState, onUserDeleteHandler } = useAuthContext();
+    const { userState, onUserDeleteHandler, onEditHandler } = useAuthContext();
     const [values, setValues] = useState({
         "email": userState.email || '',
         "course": userState.course || '',
+        "classNum": userState.classNum || '',
     });
     const [errors, setErrors] = useState({});
     const [isTouched, setIsTouched] = useState(false);
@@ -43,6 +44,12 @@ export function MyProfile() {
             newErrors.email = "";
         }
 
+        if (newValues.classNum !== "" && !Number(newValues.classNum)) {
+            newErrors.classNumNum = "Невалидна стойност за клас!";
+        } else {
+            newErrors.classNumNum = "";
+        }
+
         setErrors(newErrors);
     }
 
@@ -58,17 +65,23 @@ export function MyProfile() {
         setValues({
             "email": userState.email || '',
             "course": userState.course || '',
+            "classNum": userState.classNum || '',
         });
         setIsTouched(false);
         setIsEdit(false);
     }
 
-    function onSubmitHandler(e) {
+    function onSubmitEditHandler(e) {
         e.preventDefault();
-        // todo set userState to new values
-        // todo put request
-        setIsTouched(false);
-        setIsEdit(false);
+
+
+        handleIsValid(values);
+        if (!(errors.email || errors.course || errors.classNum)) {
+            onEditHandler(values);
+
+            setIsTouched(false);
+            setIsEdit(false);
+        }
     }
 
 
@@ -76,7 +89,7 @@ export function MyProfile() {
         <section className="profileSection">
             <h2>Моят профил</h2>
 
-            <form id='editProfile' onSubmit={onSubmitHandler}>
+            <form id='editProfile'>
                 <div className="profileLine">
                     <label htmlFor='email'>Имейл: </label>
                     <input
@@ -101,6 +114,29 @@ export function MyProfile() {
                     />
                 </div>
 
+                <div className="profileLine">
+                    <label htmlFor='classNum'>Клас: </label>
+                    <select name="classNum"
+                        disabled={!isEdit}
+                        value={values.classNum}
+                        onChange={handleChange}
+                        onBlur={handleIsValid}>
+                        <option disabled={true} value="">--- Избери клас ---</option>
+                        <option disabled={!isEdit} value="1">1</option>
+                        <option disabled={!isEdit} value="2">2</option>
+                        <option disabled={!isEdit} value="3">3</option>
+                        <option disabled={!isEdit} value="4">4</option>
+                        <option disabled={!isEdit} value="5">5</option>
+                        <option disabled={!isEdit} value="6">6</option>
+                        <option disabled={!isEdit} value="7">7</option>
+                        <option disabled={!isEdit} value="8">8</option>
+                        <option disabled={!isEdit} value="9">9</option>
+                        <option disabled={!isEdit} value="10">10</option>
+                        <option disabled={!isEdit} value="11">11</option>
+                        <option disabled={!isEdit} value="12">12</option>
+                    </select>
+                </div>
+
                 {
                     isEdit
                         ? (<div id='btnsWrapper'>
@@ -108,10 +144,14 @@ export function MyProfile() {
                             <button
                                 className="submitBtn btn1"
                                 onClick={onCancelHandler}
-                                disabled={(errors.email || errors.course)}>
+                                disabled={!isEdit}>
                                 Отказ
                             </button>
-                            <button className="submitBtn btn2" type="submit" disabled={!isTouched || (errors.email || errors.course)}>
+                            <button
+                                className="submitBtn btn2"
+                                onClick={onSubmitEditHandler}
+                                // type="submit"
+                                disabled={!isEdit && (!isTouched || (errors.email || errors.course || errors.classNum))}>
                                 Редактирай
                             </button>
 

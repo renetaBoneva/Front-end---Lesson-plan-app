@@ -18,7 +18,8 @@
     text-shadow: 1px 1px 0 #fbb02e;
 }
 
-.profileIconsWrapper, #btnsWrapper {
+.profileIconsWrapper,
+#btnsWrapper {
     display: flex;
     flex-direction: row;
     gap: 1em;
@@ -50,4 +51,8 @@
 
 .profileInfo {
     color: #ff5757;
+}
+
+.profileLine select, .profileLine input {
+    width: 100%;
 }
