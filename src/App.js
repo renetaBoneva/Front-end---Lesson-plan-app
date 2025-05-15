@@ -25,6 +25,7 @@ function App() {
             {/* Изкуственият интелект в организацията на преподавателската дейност */}
             {/* stranica za generirane na plan konspekti za cqlata godina */}
             {/* stranica za generirane na testove */}
+            
             {/* Home page design */}
             {/* Loading */}
             {/* error handling */}

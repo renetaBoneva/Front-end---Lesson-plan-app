@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import './LessonPlan.css';
 import * as lessonPlanService from "../../services/lessonPlanService";
@@ -9,8 +9,8 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 export function LessonPlan() {
     const { userState } = useAuthContext();
     const [values, setValues] = useState({
-        "classNum":  userState?.classNum || "",
-        "course": userState?.course || "",
+        "classNum": "",
+        "course": "",
         "theme": "",
         "type": "",
         "time": "40",
@@ -31,6 +31,15 @@ export function LessonPlan() {
     const [isTouched, setIsTouched] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
+    useEffect(() => {
+        if (userState) {
+            setValues(prev => ({
+                ...prev,
+                "classNum": userState.classNum || "",
+                "course": userState.course || ""
+            }));
+        }
+    }, [userState]);
 
     function handleChange(e) {
         // Change Values;
@@ -42,36 +51,28 @@ export function LessonPlan() {
         };
 
         setValues(newValues);
+        setIsTouched(true);
         //Validate some values
         handleIsValid(newValues);
     }
 
     function handleIsValid(newValues) {
-        setIsTouched(true);
-        let newErrors = errors;
+        let newErrors = {};
 
         if (newValues.classNum === "") {
-            newErrors.classNumNum = "Въведете клас!";
-        } else {
-            newErrors.classNumNum = "";
+            newErrors.classNum = "Въведете клас!";
         }
 
         if (newValues.course === "") {
             newErrors.course = "Въведете предмет!";
-        } else {
-            newErrors.course = "";
         }
 
         if (newValues.theme === "") {
             newErrors.theme = "Въведете тема на урока!";
-        } else {
-            newErrors.theme = "";
         }
 
         if (newValues.type === "") {
             newErrors.type = "Въведете тип на урока!";
-        } else {
-            newErrors.type = "";
         }
 
         setErrors(newErrors);
@@ -79,8 +80,11 @@ export function LessonPlan() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        handleIsValid(values);
         if (!(errors.course || errors.classNum || errors.theme || errors.type)) {
-            setIsLoading(true);
+            setIsLoading(true); 
+            console.log(values);
+                       
 
             try {
                 const res = await lessonPlanService.generateMeLessonPlan(values);
@@ -102,8 +106,10 @@ export function LessonPlan() {
             <div className="lessonPlanWrapper">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="classNum">Клас<span className="requiredStart">*</span></label>
-                    <select name="classNum"
+                    <select
+                        name="classNum"
                         value={values.classNum}
+                        disabled={isLoading}
                         onChange={handleChange}
                         onBlur={handleIsValid}>
                         <option value="" disabled>--- Избери клас ---</option>
@@ -128,6 +134,7 @@ export function LessonPlan() {
                         name="course"
                         autoComplete="classNum"
                         value={values.course}
+                        disabled={isLoading}
                         onChange={handleChange}
                         onBlur={handleIsValid}
                     />
@@ -138,6 +145,7 @@ export function LessonPlan() {
                         type="text"
                         name="theme"
                         value={values.theme}
+                        disabled={isLoading}
                         onChange={handleChange}
                         onBlur={handleIsValid}
                     />
@@ -148,6 +156,7 @@ export function LessonPlan() {
                     <select
                         name="type"
                         value={values.type}
+                        disabled={isLoading}
                         onChange={handleChange}
                         onBlur={handleIsValid}
                     >
@@ -161,6 +170,7 @@ export function LessonPlan() {
                     <select
                         name="time"
                         value={values.time}
+                        disabled={isLoading}
                         onChange={handleChange}
                     >
                         <option>30</option>
@@ -177,6 +187,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="method"
                                 checked={values.method}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="method">Методи на преподаване</label>
@@ -187,6 +198,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="target"
                                 checked={values.target}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="target">Цели</label>
@@ -197,6 +209,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="concepts"
                                 checked={values.concepts}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="concepts">Опорни понятия</label>
@@ -207,6 +220,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="CoursesConnections"
                                 checked={values.CoursesConnections}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="CoursesConnections">Междупредметни връзки</label>
@@ -217,6 +231,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="didacticTools"
                                 checked={values.didacticTools}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="didacticTools">Дидактически средства</label>
@@ -231,6 +246,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="introduction"
                                 checked={values.introduction}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="introduction">Въвеждаща част</label>
@@ -241,6 +257,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="exercises"
                                 checked={values.exercises}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="exercises">Задачи за упражнение</label>
@@ -251,6 +268,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="conclusion"
                                 checked={values.conclusion}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="conclusion">Заключителна част</label>
@@ -261,6 +279,7 @@ export function LessonPlan() {
                                 type="checkbox"
                                 name="homework"
                                 checked={values.homework}
+                                disabled={isLoading}
                                 onChange={handleChange}
                             />
                             <label htmlFor="homework">Домашна работа</label>
@@ -271,9 +290,10 @@ export function LessonPlan() {
                     <textarea
                         name="notes"
                         value={values.notes}
+                        disabled={isLoading}
                         onChange={handleChange} />
 
-                    <button className="submitBtn btn1" type="submit" disabled={!isTouched || (errors.classNum || errors.course || errors.theme)}>
+                    <button className="submitBtn btn1" type="submit" disabled={ isLoading || !isTouched || (errors.classNum || errors.course || errors.theme)}>
                         Генерирай
                     </button>
                 </form>
