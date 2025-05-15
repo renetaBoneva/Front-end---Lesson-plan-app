@@ -1,5 +1,5 @@
-// const serverAPI = "https://server-lesson-plan.onrender.com";
-const serverAPI = "http://localhost:3434";
+const serverAPI = "https://server-lesson-plan.onrender.com";
+// const serverAPI = "http://localhost:3434";
 
 async function Req(method, url, data) {
     const options = {};
