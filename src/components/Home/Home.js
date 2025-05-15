@@ -1,8 +1,22 @@
+import './Home.css';
 
 export function Home() {
     return (
-        <>
-            <h1>Smart Plan</h1>
-            <h2>Lesson plan with AI</h2>
-        </>);
+        <div className="homeSectionWrapper">
+            <div className='wrapper'>
+
+                <section id="homeHeader">
+                    <h1>Smart Plan</h1>
+                    <p>Добре дошли в платформата, създадена специално за преподаватели,
+                        които искат да улеснят и обогатят подготовката си за учебните часове.</p>
+                </section>
+                <section className="">
+                    <img src="" alt="smart-plan" />
+                    <p>С помощта на изкуствен интелект тук можете бързо и лесно да генерирате
+                        план-конспекти, съобразени с учебната програма и индивидуалните ви нужди.
+                        Спестете време и насочете енергията си към най-важното — ефективното
+                        преподаване и вдъхновяването на учениците.</p>
+                </section>
+            </div>
+        </div>);
 }
