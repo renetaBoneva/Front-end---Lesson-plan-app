@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import './LessonPlan.css';
 import * as lessonPlanService from "../../services/lessonPlanService";
@@ -90,7 +91,7 @@ export function LessonPlan() {
                 setLessonPlan(generatedPlan);
 
             } catch (err) {
-                console.log(err);
+                return toast.error(err.statusText);
             } finally {
                 setIsLoading(false);
                 setIsTouched(false);

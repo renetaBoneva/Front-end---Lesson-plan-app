@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import * as authService from '../services/authService'
 import { startLoading, stopLoading } from "../redux/loader/loader-slice";
@@ -24,8 +24,7 @@ export function AuthProvider({ children }) {
 
             navigate('/');
         } catch (err) {
-            // return toast.error('Incorrect email or password!');
-            return console.log(err);
+            return toast.error('Невалиден имейл или парола!');
         } finally {
             dispatch(stopLoading());
         }
@@ -40,8 +39,7 @@ export function AuthProvider({ children }) {
             dispatch(addUser({ user }));
             navigate('/');
         } catch (err) {
-            // return toast.error('Incorrect information!');
-            return console.log(err);
+            return toast.error('Невалидна информажия!');
         } finally {
             dispatch(stopLoading());
         }
@@ -65,8 +63,7 @@ export function AuthProvider({ children }) {
             dispatch(onUserLogout());
             navigate('/');
         } catch (err) {
-            // return toast.error('Incorrect information!');
-            return console.log(err);
+            return toast.error('Не е възможно изпълнението на това действие!');
         } finally {
             dispatch(stopLoading());
         }
@@ -91,8 +88,7 @@ export function AuthProvider({ children }) {
 
             navigate('/profile');
         } catch (err) {
-            // return toast.error('Incorrect information!');
-            return console.log(err);
+            return toast.error('Невалидна информация!');
         } finally {
             dispatch(stopLoading());
         }

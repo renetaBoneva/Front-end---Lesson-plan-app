@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
 import './App.css';
 
@@ -25,17 +26,16 @@ function App() {
       <AuthProvider>
         <Header />
         <div id="contentWrapper">
+          <ToastContainer />{/* Notification component */}
+
           {isLoading
             ? <Loading />
             : (
               <Routes>
                 {/* Изкуственият интелект в организацията на преподавателската дейност */}
-                {/* stranica za generirane na plan konspekti za cqlata godina */}
                 {/* stranica za generirane na testove */}
 
                 {/* Home page design */}
-                {/* Loading */}
-                {/* error handling */}
                 <Route path='/' element={<Home />} />
                 <Route path='/home' element={<Home />} />
                 <Route path='/generate-lesson-plan' element={<LessonPlan />} />
