@@ -82,9 +82,7 @@ export function LessonPlan() {
         e.preventDefault();
         handleIsValid(values);
         if (!(errors.course || errors.classNum || errors.theme || errors.type)) {
-            setIsLoading(true); 
-            console.log(values);
-                       
+            setIsLoading(true);                        
 
             try {
                 const res = await lessonPlanService.generateMeLessonPlan(values);

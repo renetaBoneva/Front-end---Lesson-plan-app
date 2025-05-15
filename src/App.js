@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './App.css';
 
@@ -14,41 +15,48 @@ import { MyProfile } from './components/User/MyProfile/MyProfile';
 import { Logout } from './components/User/Logout/Logout';
 import { Footer } from './components/Footer/Footer';
 import { Error } from './components/common/Error/Error';
+import { Loading } from './components/Loading/Loading';
 
 function App() {
+  const isLoading = useSelector(state => state.isLoading);
+
   return (
     <>
       <AuthProvider>
         <Header />
         <div id="contentWrapper">
-          <Routes>
-            {/* Изкуственият интелект в организацията на преподавателската дейност */}
-            {/* stranica za generirane na plan konspekti za cqlata godina */}
-            {/* stranica za generirane na testove */}
-            
-            {/* Home page design */}
-            {/* Loading */}
-            {/* error handling */}
-            <Route path='/' element={<Home />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/generate-lesson-plan' element={<LessonPlan />} />
+          {isLoading
+            ? <Loading />
+            : (
+              <Routes>
+                {/* Изкуственият интелект в организацията на преподавателската дейност */}
+                {/* stranica za generirane na plan konspekti za cqlata godina */}
+                {/* stranica za generirane na testove */}
 
-            <Route element={<IsNotAuthenticated />}>{/*Routes for guests only*/}
-            
-              <Route path='/register' element={<Register />} />
-              <Route path='/login' element={<Login />} />
-              
-            </Route>
+                {/* Home page design */}
+                {/* Loading */}
+                {/* error handling */}
+                <Route path='/' element={<Home />} />
+                <Route path='/home' element={<Home />} />
+                <Route path='/generate-lesson-plan' element={<LessonPlan />} />
 
-            <Route element={<IsAuthenticated />}>{/*Routes for authenticated users only*/}
-              
-              <Route path='/profile' element={<MyProfile />} />
+                <Route element={<IsNotAuthenticated />}>{/*Routes for guests only*/}
 
-            </Route>
-            <Route path='/logout' element={<Logout />} />
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/login' element={<Login />} />
 
-            <Route path='*' element={<Error />} />
-          </Routes>
+                </Route>
+
+                <Route element={<IsAuthenticated />}>{/*Routes for authenticated users only*/}
+
+                  <Route path='/profile' element={<MyProfile />} />
+
+                </Route>
+                <Route path='/logout' element={<Logout />} />
+
+                <Route path='*' element={<Error />} />
+              </Routes>
+            )}
         </div>
         <Footer />
       </AuthProvider>
