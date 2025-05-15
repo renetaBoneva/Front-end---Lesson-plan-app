@@ -80,6 +80,67 @@
     text-align: center;
 }
 
+.homeSection {
+    display: flex;
+    flex-direction: row;
+}
+
+.logoImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60%;
+    min-height: 300px;
+    max-height: 300px;
+
+
+    background-image: url('../../../public/img/logoReversed.png');
+    /* Update path accordingly */
+    background-size: 120%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.homeSection a {
+    padding: 0.8em 1.5em;
+    border-radius: 0.5em;
+    border: 1px solid #0097b2;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: #fbb02e;
+    text-shadow: 1px 1px 0 #0097b2;
+}
+
+.homeSection a:hover {
+    border: 1px solid #ff5757;
+    color: #ff5757;
+    text-shadow: 1px 1px 0 #597ebe;
+    cursor: pointer;
+}
+
+.homeSection p {
+    padding: 1em 2em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lessonPlanParagraph {
+    color: #597ebe;
+}
+
+#homeSection2 p {
+    color: #0097b2;
+    min-height: 150px;
+}
+
+#homeSection3 a{
+    margin: 1em 2em 2em 2em;
+}
+
 @media (min-width: 1896px) {
     .homeSectionWrapper {
         min-height: 90vh;
@@ -98,5 +159,14 @@
     #homeHeader {
         min-height: 500px;
         font-size: 1.5em;
+    }
+
+    .homeSection {
+        flex-direction: column-reverse;
+    }
+
+    .logoImage {
+        width: 100%;
+        background-size: 150%;
     }
 }
