@@ -16,7 +16,11 @@ async function Req(method, url, data) {
     }
 
     if (accessToken) {
-        options.headers = { ...options.headers, 'X-Authorization': accessToken }
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': accessToken,
+            'credentials': 'include',
+        }
     }
 
     const res = await fetch(`${serverAPI}${url}`, options);
