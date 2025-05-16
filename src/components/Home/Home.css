@@ -132,7 +132,12 @@
     color: #597ebe;
 }
 
+#homeSection2 {
+padding: 1em 2em;
+}
+
 #homeSection2 p {
+    background-color: #f2f2f2;
     color: #0097b2;
     min-height: 150px;
 }
