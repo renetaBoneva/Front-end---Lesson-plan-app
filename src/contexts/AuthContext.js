@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
             dispatch(addUser({ user }));
             navigate('/');
         } catch (err) {
-            return toast.error('Невалидна информажия!');
+            return toast.error('Невалидна информация!');
         } finally {
             dispatch(stopLoading());
         }
